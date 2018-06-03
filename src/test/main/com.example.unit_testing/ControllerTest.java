@@ -26,7 +26,7 @@ public class ControllerTest {
     public static void beforeClass() {
       System.out.println("Before Class");
 
-      mockMvc = MockMvcBuilder.StandAloneSetUp(controllerObj).build();         // Create stand alone set up for REST end point
+      mockMvc = MockMvcBuilder.StandAloneSetUp(controllerObj).build();         				// Create stand alone set up for REST end point
 
     }
 
@@ -39,7 +39,7 @@ public class ControllerTest {
     public void testControllerWithTextDataAtRequetEndPoint() throws Exception {
 
       mockMvc.perform(
-              MockMvcRequestBuilder.get("/hello")						// Hit the request i.e. GET, end point i.e. /hello
+              MockMvcRequestBuilder.get("/hello")							// Hit the request i.e. GET, end point i.e. /hello
               ) 					
               .andExpect(MockMvcResultMatchers.status().isOk())
               .andExpect(MockMvcResultMatchers.content().string("Hello World"));
@@ -50,7 +50,7 @@ public class ControllerTest {
     public void testControllerWithTextDataAtRequetEndPoint_NeatCode() throws Exception {
 
       mockMvc.perform(
-              get("/hello")											// Hit the request i.e. GET, end point i.e. /hello
+              get("/hello")										// Hit the request i.e. GET, end point i.e. /hello
               ) 					
               .andExpect(status().isOk())
               .andExpect(content().string("Hello World"));
@@ -61,7 +61,7 @@ public class ControllerTest {
     public void testControllerWithJsonDataAtRequetEndPoint_Get_NeatCode() throws Exception {
 
       mockMvc.perform(
-              get("/hello/json/get").accept(MediaType.APPLICATION_JSON)											// Hit the request i.e. GET, end point i.e. /hello
+              get("/hello/json/get").accept(MediaType.APPLICATION_JSON)					// Hit the request i.e. GET, end point i.e. /hello
               ) 					
               .andExpect(status().isOk())
               .andExpect(jsonPath("$.key", Matchers.is("Key")))
@@ -74,7 +74,7 @@ public class ControllerTest {
 
       mockMvc.perform(
               post("/hello/json/post")
-              .contentType(MediaType.APPLICATION_JSON)											// Hit the request i.e. GET, end point i.e. /hello
+              .contentType(MediaType.APPLICATION_JSON)							// Hit the request i.e. POST, end point i.e. /hello
               .content(json)
               ) 					
               .andExpect(status().isOk())
